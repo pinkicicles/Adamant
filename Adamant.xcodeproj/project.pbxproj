@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC59EBBE18F48BB100131D2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBBD18F48BB100131D2C /* Foundation.framework */; };
+		DC59EBC018F48BB100131D2C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBBF18F48BB100131D2C /* CoreGraphics.framework */; };
+		DC59EBC218F48BB100131D2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBC118F48BB100131D2C /* UIKit.framework */; };
+		DC59EBC418F48BB100131D2C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBC318F48BB100131D2C /* CoreData.framework */; };
+		DC59EBCA18F48BB200131D2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC59EBC818F48BB200131D2C /* InfoPlist.strings */; };
+		DC59EBCC18F48BB200131D2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DC59EBCB18F48BB200131D2C /* main.m */; };
+		DC59EBD018F48BB200131D2C /* CPWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DC59EBCF18F48BB200131D2C /* CPWAppDelegate.m */; };
+		DC59EBD318F48BB200131D2C /* Adamant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC59EBD118F48BB200131D2C /* Adamant.xcdatamodeld */; };
+		DC59EBD518F48BB200131D2C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC59EBD418F48BB200131D2C /* Images.xcassets */; };
+		DC59EBDC18F48BB200131D2C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBDB18F48BB200131D2C /* XCTest.framework */; };
+		DC59EBDD18F48BB200131D2C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBBD18F48BB100131D2C /* Foundation.framework */; };
+		DC59EBDE18F48BB200131D2C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBC118F48BB100131D2C /* UIKit.framework */; };
+		DC59EBDF18F48BB200131D2C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC59EBC318F48BB100131D2C /* CoreData.framework */; };
+		DC59EBE718F48BB200131D2C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC59EBE518F48BB200131D2C /* InfoPlist.strings */; };
+		DC59EBE918F48BB200131D2C /* AdamantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DC59EBE818F48BB200131D2C /* AdamantTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DC59EBE018F48BB200131D2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC59EBB218F48BB100131D2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC59EBB918F48BB100131D2C;
+			remoteInfo = Adamant;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DC59EBBA18F48BB100131D2C /* Adamant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adamant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC59EBBD18F48BB100131D2C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DC59EBBF18F48BB100131D2C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DC59EBC118F48BB100131D2C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DC59EBC318F48BB100131D2C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DC59EBC718F48BB200131D2C /* Adamant-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Adamant-Info.plist"; sourceTree = "<group>"; };
+		DC59EBC918F48BB200131D2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC59EBCB18F48BB200131D2C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DC59EBCD18F48BB200131D2C /* Adamant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Adamant-Prefix.pch"; sourceTree = "<group>"; };
+		DC59EBCE18F48BB200131D2C /* CPWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPWAppDelegate.h; sourceTree = "<group>"; };
+		DC59EBCF18F48BB200131D2C /* CPWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPWAppDelegate.m; sourceTree = "<group>"; };
+		DC59EBD218F48BB200131D2C /* Adamant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Adamant.xcdatamodel; sourceTree = "<group>"; };
+		DC59EBD418F48BB200131D2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DC59EBDA18F48BB200131D2C /* AdamantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdamantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC59EBDB18F48BB200131D2C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DC59EBE418F48BB200131D2C /* AdamantTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AdamantTests-Info.plist"; sourceTree = "<group>"; };
+		DC59EBE618F48BB200131D2C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC59EBE818F48BB200131D2C /* AdamantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdamantTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC59EBB718F48BB100131D2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC59EBC018F48BB100131D2C /* CoreGraphics.framework in Frameworks */,
+				DC59EBC418F48BB100131D2C /* CoreData.framework in Frameworks */,
+				DC59EBC218F48BB100131D2C /* UIKit.framework in Frameworks */,
+				DC59EBBE18F48BB100131D2C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC59EBD718F48BB200131D2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC59EBDC18F48BB200131D2C /* XCTest.framework in Frameworks */,
+				DC59EBDF18F48BB200131D2C /* CoreData.framework in Frameworks */,
+				DC59EBDE18F48BB200131D2C /* UIKit.framework in Frameworks */,
+				DC59EBDD18F48BB200131D2C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC59EBB118F48BB100131D2C = {
+			isa = PBXGroup;
+			children = (
+				DC59EBC518F48BB100131D2C /* Adamant */,
+				DC59EBE218F48BB200131D2C /* AdamantTests */,
+				DC59EBBC18F48BB100131D2C /* Frameworks */,
+				DC59EBBB18F48BB100131D2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC59EBBB18F48BB100131D2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC59EBBA18F48BB100131D2C /* Adamant.app */,
+				DC59EBDA18F48BB200131D2C /* AdamantTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC59EBBC18F48BB100131D2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC59EBBD18F48BB100131D2C /* Foundation.framework */,
+				DC59EBBF18F48BB100131D2C /* CoreGraphics.framework */,
+				DC59EBC118F48BB100131D2C /* UIKit.framework */,
+				DC59EBC318F48BB100131D2C /* CoreData.framework */,
+				DC59EBDB18F48BB200131D2C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC59EBC518F48BB100131D2C /* Adamant */ = {
+			isa = PBXGroup;
+			children = (
+				DC59EBCE18F48BB200131D2C /* CPWAppDelegate.h */,
+				DC59EBCF18F48BB200131D2C /* CPWAppDelegate.m */,
+				DC59EBD418F48BB200131D2C /* Images.xcassets */,
+				DC59EBD118F48BB200131D2C /* Adamant.xcdatamodeld */,
+				DC59EBC618F48BB200131D2C /* Supporting Files */,
+			);
+			path = Adamant;
+			sourceTree = "<group>";
+		};
+		DC59EBC618F48BB200131D2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC59EBC718F48BB200131D2C /* Adamant-Info.plist */,
+				DC59EBC818F48BB200131D2C /* InfoPlist.strings */,
+				DC59EBCB18F48BB200131D2C /* main.m */,
+				DC59EBCD18F48BB200131D2C /* Adamant-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DC59EBE218F48BB200131D2C /* AdamantTests */ = {
+			isa = PBXGroup;
+			children = (
+				DC59EBE818F48BB200131D2C /* AdamantTests.m */,
+				DC59EBE318F48BB200131D2C /* Supporting Files */,
+			);
+			path = AdamantTests;
+			sourceTree = "<group>";
+		};
+		DC59EBE318F48BB200131D2C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC59EBE418F48BB200131D2C /* AdamantTests-Info.plist */,
+				DC59EBE518F48BB200131D2C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC59EBB918F48BB100131D2C /* Adamant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC59EBEC18F48BB200131D2C /* Build configuration list for PBXNativeTarget "Adamant" */;
+			buildPhases = (
+				DC59EBB618F48BB100131D2C /* Sources */,
+				DC59EBB718F48BB100131D2C /* Frameworks */,
+				DC59EBB818F48BB100131D2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Adamant;
+			productName = Adamant;
+			productReference = DC59EBBA18F48BB100131D2C /* Adamant.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DC59EBD918F48BB200131D2C /* AdamantTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC59EBEF18F48BB200131D2C /* Build configuration list for PBXNativeTarget "AdamantTests" */;
+			buildPhases = (
+				DC59EBD618F48BB200131D2C /* Sources */,
+				DC59EBD718F48BB200131D2C /* Frameworks */,
+				DC59EBD818F48BB200131D2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC59EBE118F48BB200131D2C /* PBXTargetDependency */,
+			);
+			name = AdamantTests;
+			productName = AdamantTests;
+			productReference = DC59EBDA18F48BB200131D2C /* AdamantTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC59EBB218F48BB100131D2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CPW;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Connie Wu";
+				TargetAttributes = {
+					DC59EBD918F48BB200131D2C = {
+						TestTargetID = DC59EBB918F48BB100131D2C;
+					};
+				};
+			};
+			buildConfigurationList = DC59EBB518F48BB100131D2C /* Build configuration list for PBXProject "Adamant" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DC59EBB118F48BB100131D2C;
+			productRefGroup = DC59EBBB18F48BB100131D2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC59EBB918F48BB100131D2C /* Adamant */,
+				DC59EBD918F48BB200131D2C /* AdamantTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC59EBB818F48BB100131D2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC59EBCA18F48BB200131D2C /* InfoPlist.strings in Resources */,
+				DC59EBD518F48BB200131D2C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC59EBD818F48BB200131D2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC59EBE718F48BB200131D2C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC59EBB618F48BB100131D2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC59EBCC18F48BB200131D2C /* main.m in Sources */,
+				DC59EBD018F48BB200131D2C /* CPWAppDelegate.m in Sources */,
+				DC59EBD318F48BB200131D2C /* Adamant.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC59EBD618F48BB200131D2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC59EBE918F48BB200131D2C /* AdamantTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DC59EBE118F48BB200131D2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC59EBB918F48BB100131D2C /* Adamant */;
+			targetProxy = DC59EBE018F48BB200131D2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DC59EBC818F48BB200131D2C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC59EBC918F48BB200131D2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DC59EBE518F48BB200131D2C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC59EBE618F48BB200131D2C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DC59EBEA18F48BB200131D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DC59EBEB18F48BB200131D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DC59EBED18F48BB200131D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adamant/Adamant-Prefix.pch";
+				INFOPLIST_FILE = "Adamant/Adamant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DC59EBEE18F48BB200131D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adamant/Adamant-Prefix.pch";
+				INFOPLIST_FILE = "Adamant/Adamant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DC59EBF018F48BB200131D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Adamant.app/Adamant";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adamant/Adamant-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AdamantTests/AdamantTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DC59EBF118F48BB200131D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Adamant.app/Adamant";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Adamant/Adamant-Prefix.pch";
+				INFOPLIST_FILE = "AdamantTests/AdamantTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC59EBB518F48BB100131D2C /* Build configuration list for PBXProject "Adamant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC59EBEA18F48BB200131D2C /* Debug */,
+				DC59EBEB18F48BB200131D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC59EBEC18F48BB200131D2C /* Build configuration list for PBXNativeTarget "Adamant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC59EBED18F48BB200131D2C /* Debug */,
+				DC59EBEE18F48BB200131D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DC59EBEF18F48BB200131D2C /* Build configuration list for PBXNativeTarget "AdamantTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC59EBF018F48BB200131D2C /* Debug */,
+				DC59EBF118F48BB200131D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DC59EBD118F48BB200131D2C /* Adamant.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DC59EBD218F48BB200131D2C /* Adamant.xcdatamodel */,
+			);
+			currentVersion = DC59EBD218F48BB200131D2C /* Adamant.xcdatamodel */;
+			path = Adamant.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DC59EBB218F48BB100131D2C /* Project object */;
+}
