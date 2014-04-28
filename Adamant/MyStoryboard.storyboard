@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Mp-Dx-JDT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Line Chart View Controller-->
+        <scene sceneID="U2S-mz-SN0">
+            <objects>
+                <viewController storyboardIdentifier="ChartView" hidesBottomBarWhenPushed="YES" id="FPo-pa-593" customClass="JBLineChartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xdT-SX-cXO"/>
+                        <viewControllerLayoutGuide type="bottom" id="BSz-80-qvf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Zf-7b-WQb" customClass="CPWAda">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.18413185586734693" green="0.18413185586734693" blue="0.18413185586734693" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dhI-m1-YIQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbC-8m-iUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="499" y="-87"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QOw-RK-YR5">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="9Mp-Dx-JDT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rqd-UH-Ktc">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="d98-qb-A7g" kind="relationship" relationship="rootViewController" id="iVE-SK-E8p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o2Q-oK-6Y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1036" y="-87"/>
+        </scene>
+        <!--Device Selector-->
+        <scene sceneID="X9S-eU-WsB">
+            <objects>
+                <tableViewController id="d98-qb-A7g" customClass="deviceSelector" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wJJ-NT-1G2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="d2x-cU-aOt">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d2x-cU-aOt" id="NWh-TL-TXX">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="d98-qb-A7g" id="nM5-Ba-ALb"/>
+                            <outlet property="delegate" destination="d98-qb-A7g" id="L48-Ya-jbS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MdC-2Y-aeG"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="hu9-GC-QUa">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                    <connections>
+                        <segue destination="EDj-Of-osr" kind="push" identifier="mainSegue" id="SAD-Dc-VH1"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="URo-ZJ-84a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-515" y="-87"/>
+        </scene>
+        <!--Adamant View Controller - MainVC-->
+        <scene sceneID="TQF-Ra-Uui">
+            <objects>
+                <viewController storyboardIdentifier="MainIdentifier" title="MainVC" id="EDj-Of-osr" customClass="CPWAdamantViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wxD-Pw-TTn"/>
+                        <viewControllerLayoutGuide type="bottom" id="2LG-br-JhF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Ze-eo-QTW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1jH-Lt-kg9">
+                                <rect key="frame" x="76" y="435" width="150" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Adamant Logo" translatesAutoresizingMaskIntoConstraints="NO" id="nIx-Id-lcr">
+                                <rect key="frame" x="-5" y="38" width="330" height="191"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IfH-9g-CHp">
+                                <rect key="frame" x="70" y="407" width="181" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start Breath Measurement">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAndContinue:" destination="EDj-Of-osr" eventType="touchUpInside" id="jng-4P-2SA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2498604910714286" green="0.2498604910714286" blue="0.2498604910714286" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lhQ-yR-yzd"/>
+                    <connections>
+                        <segue destination="FPo-pa-593" kind="push" identifier="ChartView" id="IWl-Lj-14x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ge-Pp-8In" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="-87"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Adamant Logo" width="4000" height="2333"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09CE06E67C7C41E388776A14 /* JBLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8302A08828540ACBC72B6C1 /* JBLineChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0B3AAA005BB64D7C80B9A240 /* JBBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A936C33F2424DFE87E6D38D /* JBBarChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		1952C3F886D74FBA9CC188A7 /* JBBarChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB0A8BC55242461E80AF645D /* JBBarChartView.h */; };
+		1F69CFA8A1A44A03B113AADB /* JBChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = BB497833370947BFB1560573 /* JBChartView.h */; };
+		535862026501430DA888B05D /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 986E55A1948E4076B721C5FD /* Pods-dummy.m */; };
+		6978B49FB7D04065B85FAA1C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFC4BE04A744799E6C8CE5 /* Foundation.framework */; };
+		7BD6C489643D40FDAD83559B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFC4BE04A744799E6C8CE5 /* Foundation.framework */; };
+		8F1162A91CC84E5980913DD3 /* libPods-JBChartView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FB3632ACF4431CBE3B8AFD /* libPods-JBChartView.a */; };
+		8FBBBA5E8DC74E43B87D5AF5 /* Pods-JBChartView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4D8945414849A9A1CC9D81 /* Pods-JBChartView-dummy.m */; };
+		B6B249608D9D4E56B76AF443 /* JBLineChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 957BFA5FDFEB4DA69E3A2858 /* JBLineChartView.h */; };
+		BC8404B447AB4C17ABA47740 /* JBChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D512D27614053B355D4B2 /* JBChartView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DC7B451018F8647B00004CDA /* JBChartHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = DC7B450E18F8647B00004CDA /* JBChartHeaderView.h */; };
+		DC7B451118F8647B00004CDA /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7B450F18F8647B00004CDA /* JBChartHeaderView.m */; };
+		DC7B451218F8647B00004CDA /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7B450F18F8647B00004CDA /* JBChartHeaderView.m */; };
+		DC7B451A18FF17B000004CDA /* JBBarChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7B451718FF17B000004CDA /* JBBarChartFooterView.m */; };
+		DC7B451B18FF17B000004CDA /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7B451918FF17B000004CDA /* JBLineChartFooterView.m */; };
+		DC7B452718FF24BE00004CDA /* JBChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7B452218FF24BE00004CDA /* JBChartInformationView.m */; };
+		DC7B452818FF24BE00004CDA /* JBChartTooltipTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7B452418FF24BE00004CDA /* JBChartTooltipTipView.m */; };
+		DC7B452918FF24BE00004CDA /* JBChartTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC7B452618FF24BE00004CDA /* JBChartTooltipView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8773E12C747E4C0D92D4A839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C678450E88324788B0DDAC29 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C26A306834744032B2BF7219;
+			remoteInfo = "Pods-JBChartView";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D11DB406F324CE8ACA49CB2 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		2ABFC4BE04A744799E6C8CE5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		35FB3632ACF4431CBE3B8AFD /* libPods-JBChartView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JBChartView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A936C33F2424DFE87E6D38D /* JBBarChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBBarChartView.m; path = Classes/JBBarChartView.m; sourceTree = "<group>"; };
+		60E59859233945C8B56A6DBC /* Pods-JBChartView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JBChartView.xcconfig"; sourceTree = "<group>"; };
+		6AB6CB9A10894EDCA9C4EBA7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E8D512D27614053B355D4B2 /* JBChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBChartView.m; path = Classes/JBChartView.m; sourceTree = "<group>"; };
+		934144F78FC64F59A5A12731 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		957BFA5FDFEB4DA69E3A2858 /* JBLineChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBLineChartView.h; path = Classes/JBLineChartView.h; sourceTree = "<group>"; };
+		986E55A1948E4076B721C5FD /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		9BE0612FCE934AF9A6B22770 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		BA5DD746588A41499721AA89 /* Pods-JBChartView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JBChartView-Private.xcconfig"; sourceTree = "<group>"; };
+		BB497833370947BFB1560573 /* JBChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBChartView.h; path = Classes/JBChartView.h; sourceTree = "<group>"; };
+		C47D4317129E491289A4107C /* Pods-JBChartView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JBChartView-prefix.pch"; sourceTree = "<group>"; };
+		CAC46B320FDF4AE09A73927B /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CB7CB00A00EC4BC79D3087EE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		DB0A8BC55242461E80AF645D /* JBBarChartView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JBBarChartView.h; path = Classes/JBBarChartView.h; sourceTree = "<group>"; };
+		DC7B450E18F8647B00004CDA /* JBChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBChartHeaderView.h; path = Classes/JBChartHeaderView.h; sourceTree = "<group>"; };
+		DC7B450F18F8647B00004CDA /* JBChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBChartHeaderView.m; path = Classes/JBChartHeaderView.m; sourceTree = "<group>"; };
+		DC7B451618FF17B000004CDA /* JBBarChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBBarChartFooterView.h; sourceTree = "<group>"; };
+		DC7B451718FF17B000004CDA /* JBBarChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBBarChartFooterView.m; sourceTree = "<group>"; };
+		DC7B451818FF17B000004CDA /* JBLineChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartFooterView.h; sourceTree = "<group>"; };
+		DC7B451918FF17B000004CDA /* JBLineChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartFooterView.m; sourceTree = "<group>"; };
+		DC7B451C18FF192500004CDA /* JBColorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBColorConstants.h; sourceTree = "<group>"; };
+		DC7B451D18FF192500004CDA /* JBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBConstants.h; sourceTree = "<group>"; };
+		DC7B451E18FF192500004CDA /* JBFontConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBFontConstants.h; sourceTree = "<group>"; };
+		DC7B451F18FF192500004CDA /* JBStringConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBStringConstants.h; sourceTree = "<group>"; };
+		DC7B452018FF192500004CDA /* JBUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBUIConstants.h; sourceTree = "<group>"; };
+		DC7B452118FF24BE00004CDA /* JBChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartInformationView.h; sourceTree = "<group>"; };
+		DC7B452218FF24BE00004CDA /* JBChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartInformationView.m; sourceTree = "<group>"; };
+		DC7B452318FF24BE00004CDA /* JBChartTooltipTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipTipView.h; sourceTree = "<group>"; };
+		DC7B452418FF24BE00004CDA /* JBChartTooltipTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipTipView.m; sourceTree = "<group>"; };
+		DC7B452518FF24BE00004CDA /* JBChartTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartTooltipView.h; sourceTree = "<group>"; };
+		DC7B452618FF24BE00004CDA /* JBChartTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartTooltipView.m; sourceTree = "<group>"; };
+		DE4D8945414849A9A1CC9D81 /* Pods-JBChartView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JBChartView-dummy.m"; sourceTree = "<group>"; };
+		F8302A08828540ACBC72B6C1 /* JBLineChartView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JBLineChartView.m; path = Classes/JBLineChartView.m; sourceTree = "<group>"; };
+		FFA6684EBC8C42B7B7390D05 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		125DD334142B470A9427E61C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BD6C489643D40FDAD83559B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B5BFF1AF06648BD8DAD7167 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6978B49FB7D04065B85FAA1C /* Foundation.framework in Frameworks */,
+				8F1162A91CC84E5980913DD3 /* libPods-JBChartView.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		146A1125DFCD4090A60CC011 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCAD828D790347B6B10B4475 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		149328483E244B919EA85469 = {
+			isa = PBXGroup;
+			children = (
+				CAC46B320FDF4AE09A73927B /* Podfile */,
+				146A1125DFCD4090A60CC011 /* Frameworks */,
+				3ED46ECE46CD4EBBBB7DCDD2 /* Pods */,
+				B6FDBCBE8B514D399A1E04DC /* Products */,
+				2FA108AFE9C44CBA9FCF52BA /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		2FA108AFE9C44CBA9FCF52BA /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6B570D8C6196470BA354B9B7 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		3ED46ECE46CD4EBBBB7DCDD2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EF9DED3C41704287A2ECACCD /* JBChartView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6B570D8C6196470BA354B9B7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB7CB00A00EC4BC79D3087EE /* Pods.xcconfig */,
+				FFA6684EBC8C42B7B7390D05 /* Pods-acknowledgements.markdown */,
+				1D11DB406F324CE8ACA49CB2 /* Pods-acknowledgements.plist */,
+				986E55A1948E4076B721C5FD /* Pods-dummy.m */,
+				934144F78FC64F59A5A12731 /* Pods-environment.h */,
+				9BE0612FCE934AF9A6B22770 /* Pods-resources.sh */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B6FDBCBE8B514D399A1E04DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AB6CB9A10894EDCA9C4EBA7 /* libPods.a */,
+				35FB3632ACF4431CBE3B8AFD /* libPods-JBChartView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCAD828D790347B6B10B4475 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFC4BE04A744799E6C8CE5 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DF54DF9D289C4FAC86992F2C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				60E59859233945C8B56A6DBC /* Pods-JBChartView.xcconfig */,
+				BA5DD746588A41499721AA89 /* Pods-JBChartView-Private.xcconfig */,
+				DE4D8945414849A9A1CC9D81 /* Pods-JBChartView-dummy.m */,
+				C47D4317129E491289A4107C /* Pods-JBChartView-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		EF9DED3C41704287A2ECACCD /* JBChartView */ = {
+			isa = PBXGroup;
+			children = (
+				DC7B452118FF24BE00004CDA /* JBChartInformationView.h */,
+				DC7B452218FF24BE00004CDA /* JBChartInformationView.m */,
+				DC7B452318FF24BE00004CDA /* JBChartTooltipTipView.h */,
+				DC7B452418FF24BE00004CDA /* JBChartTooltipTipView.m */,
+				DC7B452518FF24BE00004CDA /* JBChartTooltipView.h */,
+				DC7B452618FF24BE00004CDA /* JBChartTooltipView.m */,
+				DC7B451C18FF192500004CDA /* JBColorConstants.h */,
+				DC7B451D18FF192500004CDA /* JBConstants.h */,
+				DC7B451E18FF192500004CDA /* JBFontConstants.h */,
+				DC7B451F18FF192500004CDA /* JBStringConstants.h */,
+				DC7B452018FF192500004CDA /* JBUIConstants.h */,
+				DC7B451618FF17B000004CDA /* JBBarChartFooterView.h */,
+				DC7B451718FF17B000004CDA /* JBBarChartFooterView.m */,
+				DC7B451818FF17B000004CDA /* JBLineChartFooterView.h */,
+				DC7B451918FF17B000004CDA /* JBLineChartFooterView.m */,
+				DC7B450E18F8647B00004CDA /* JBChartHeaderView.h */,
+				DC7B450F18F8647B00004CDA /* JBChartHeaderView.m */,
+				DB0A8BC55242461E80AF645D /* JBBarChartView.h */,
+				3A936C33F2424DFE87E6D38D /* JBBarChartView.m */,
+				BB497833370947BFB1560573 /* JBChartView.h */,
+				7E8D512D27614053B355D4B2 /* JBChartView.m */,
+				957BFA5FDFEB4DA69E3A2858 /* JBLineChartView.h */,
+				F8302A08828540ACBC72B6C1 /* JBLineChartView.m */,
+				DF54DF9D289C4FAC86992F2C /* Support Files */,
+			);
+			path = JBChartView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2A88C9AD0994422E8A3DE788 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1952C3F886D74FBA9CC188A7 /* JBBarChartView.h in Headers */,
+				1F69CFA8A1A44A03B113AADB /* JBChartView.h in Headers */,
+				B6B249608D9D4E56B76AF443 /* JBLineChartView.h in Headers */,
+				DC7B451018F8647B00004CDA /* JBChartHeaderView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5CFDC01A42234E71B9278B74 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6E5AC2F947B4B92867F34AE /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				21981F2A313E4D84A6292544 /* Sources */,
+				7B5BFF1AF06648BD8DAD7167 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F48F9AD03E8E4F2BA37BD7B8 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 6AB6CB9A10894EDCA9C4EBA7 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C26A306834744032B2BF7219 /* Pods-JBChartView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4ADE84541A9C4C7987C91E90 /* Build configuration list for PBXNativeTarget "Pods-JBChartView" */;
+			buildPhases = (
+				CD9470BA4BA2401D81F555B7 /* Sources */,
+				125DD334142B470A9427E61C /* Frameworks */,
+				2A88C9AD0994422E8A3DE788 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-JBChartView";
+			productName = "Pods-JBChartView";
+			productReference = 35FB3632ACF4431CBE3B8AFD /* libPods-JBChartView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C678450E88324788B0DDAC29 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = C835DAE0FE0048F48084C3FF /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 149328483E244B919EA85469;
+			productRefGroup = B6FDBCBE8B514D399A1E04DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CFDC01A42234E71B9278B74 /* Pods */,
+				C26A306834744032B2BF7219 /* Pods-JBChartView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		21981F2A313E4D84A6292544 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC7B452718FF24BE00004CDA /* JBChartInformationView.m in Sources */,
+				DC7B452918FF24BE00004CDA /* JBChartTooltipView.m in Sources */,
+				DC7B451A18FF17B000004CDA /* JBBarChartFooterView.m in Sources */,
+				DC7B451118F8647B00004CDA /* JBChartHeaderView.m in Sources */,
+				DC7B452818FF24BE00004CDA /* JBChartTooltipTipView.m in Sources */,
+				DC7B451B18FF17B000004CDA /* JBLineChartFooterView.m in Sources */,
+				535862026501430DA888B05D /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9470BA4BA2401D81F555B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B3AAA005BB64D7C80B9A240 /* JBBarChartView.m in Sources */,
+				BC8404B447AB4C17ABA47740 /* JBChartView.m in Sources */,
+				09CE06E67C7C41E388776A14 /* JBLineChartView.m in Sources */,
+				DC7B451218F8647B00004CDA /* JBChartHeaderView.m in Sources */,
+				8FBBBA5E8DC74E43B87D5AF5 /* Pods-JBChartView-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F48F9AD03E8E4F2BA37BD7B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C26A306834744032B2BF7219 /* Pods-JBChartView */;
+			targetProxy = 8773E12C747E4C0D92D4A839 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0014CB97267C443F8D100725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		3E1BDE0965C54FBFA4643104 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB7CB00A00EC4BC79D3087EE /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		541C7EC5212F488AAE47B1E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA5DD746588A41499721AA89 /* Pods-JBChartView-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-JBChartView-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9401A984C1B14B4C99A6CD43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9D3937D5BF9497DA66D948D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA5DD746588A41499721AA89 /* Pods-JBChartView-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-JBChartView-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F71949821D344E97A6E9F363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB7CB00A00EC4BC79D3087EE /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4ADE84541A9C4C7987C91E90 /* Build configuration list for PBXNativeTarget "Pods-JBChartView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9D3937D5BF9497DA66D948D /* Debug */,
+				541C7EC5212F488AAE47B1E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6E5AC2F947B4B92867F34AE /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F71949821D344E97A6E9F363 /* Debug */,
+				3E1BDE0965C54FBFA4643104 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C835DAE0FE0048F48084C3FF /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0014CB97267C443F8D100725 /* Debug */,
+				9401A984C1B14B4C99A6CD43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C678450E88324788B0DDAC29 /* Project object */;
+}
