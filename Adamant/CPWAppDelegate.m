@@ -8,6 +8,7 @@
 
 #import "CPWAppDelegate.h"
 #import "deviceSelector.h"
+#import "CPWNordicViewController.h"
 
 
 
@@ -16,6 +17,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize dataModel;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -35,6 +37,20 @@
 //    
 //    self.window.rootViewController = rC;
 //    [self.window makeKeyAndVisible];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    
+    CPWNordicViewController *nC = [[CPWNordicViewController alloc] init];
+    
+    //deviceSelector *dS = [[deviceSelector alloc]initWithStyle:UITableViewStyleGrouped];
+    
+    UINavigationController *rC = [[UINavigationController alloc]initWithRootViewController:nC];
+    
+    self.window.rootViewController = rC;
+    [self.window makeKeyAndVisible];
+    
+    
     return YES;
 
 }

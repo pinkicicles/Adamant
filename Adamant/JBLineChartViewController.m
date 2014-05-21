@@ -7,18 +7,22 @@
 //
 
 #import "JBLineChartViewController.h"
-
+#import "CPWDataManager.h"
+#import "CPWCaptureViewController.h"
+#import "CPWAppDelegate.h"
 
 // Views
-#import "/Users/conniewu/Documents/CIS 195/Adamant/Pods/JBChartView/Classes/JBLineChartView.h"
-#import "/Users/conniewu/Documents/CIS 195/Adamant/Pods/JBChartView/Classes/JBChartHeaderView.h"
-#import "/Users/conniewu/Documents/CIS 195/Adamant/Pods/JBChartView/Classes/JBLineChartFooterView.h"
-#import "/Users/conniewu/Documents/CIS 195/Adamant/Pods/JBChartView/JBChartInformationView.h"
-#import "/Users/conniewu/Documents/CIS 195/Adamant/Pods/JBChartView/JBStringConstants.h"
+#import "JBLineChartView.h"
+#import "JBChartHeaderView.h"
+#import "JBLineChartFooterView.h"
+#import "JBChartInformationView.h"
+#import "JBConstants.h"
 #define ARC4RANDOM_MAX 0x100000000
 
-JBChartInformationView *informationView;
-JBLineChartView *lineChartView;
+//JBChartInformationView *informationView;
+//JBLineChartView *lineChartView;
+JBLineChartFooterView *footerView;
+JBChartHeaderView *headerView;
 
 
 typedef NS_ENUM(NSInteger, JBLineChartLine){
@@ -41,15 +45,34 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 
 @interface JBLineChartViewController () <JBLineChartViewDelegate, JBLineChartViewDataSource>
 
+
 @property (nonatomic, strong) JBLineChartView *lineChartView;
 @property (nonatomic, strong) JBLineChartFooterView *footerView;
 @property (nonatomic, strong) JBChartInformationView *informationView;
 @property (nonatomic, strong) NSMutableArray *chartData;
+//@property (nonatomic, strong) NSMutableArray *savedData;
+
+
+@property (nonatomic, strong) NSMutableArray *savedHumidity;
+@property (nonatomic, strong) NSMutableArray *savedPressure;
+@property (nonatomic, strong) NSMutableArray *savedaTemp;
+@property (nonatomic, strong) NSMutableArray *savedirTemp;
+
+@property (nonatomic, strong) NSMutableArray *savedhumiditytimestamps;
+@property (nonatomic, strong) NSMutableArray *savedpressuretimestamps;
+@property (nonatomic, strong) NSMutableArray *savedaTemptimestamps;
+@property (nonatomic, strong) NSMutableArray *savedirTemptimestamps;
+
 @property (nonatomic, strong) NSMutableArray *daysOfWeek;
+@property (nonatomic, strong) CPWDataManager *dataModel;
+
+
 
 
 // Buttons
-//- (void)chartToggleButtonPressed:(id)sender;
+- (IBAction) pauseButton:(id)sender;
+- (IBAction) captureandSave:(id)sender;
+
 
 // Helpers
 - (void)initFakeData;
@@ -58,7 +81,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 @end
 
 @implementation JBLineChartViewController
-@synthesize d;
+@synthesize d,sensorType;
 
 
 - (id)init
@@ -72,18 +95,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     
     return self;
 }
-//
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    NSLog(@"GOT TO THE INTIALIZATION2");
-//    self = [super initWithCoder:aDecoder];
-//    if (self)
-//    {
-//        [self initFakeData];
-//    }
-//    return self;
-//}
-//
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -95,17 +107,14 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 }
 
 -(id) initWithCoder:(NSCoder *)aDecoder{
-    NSLog(@"GOT TO THE INTIALIZATION1");
-    //self = [super init];
-    
     self = [super initWithCoder:aDecoder];
     if (self)
     {
     [self initFakeData];
+    
     }
     
     if (self) {
-        //self.d = andSensorTag;
         if (!self.ambientTemp){
             self.ambientTemp = [[temperatureCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Ambient temperature"];
             self.ambientTemp.temperatureIcon.image = [UIImage imageNamed:@"temperature.png"];
@@ -180,6 +189,13 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 
 #pragma mark - Date
 
+- (CPWDataManager *)dataModel{
+    if(!_dataModel)
+        _dataModel = [[CPWDataManager alloc] init];
+    
+    return _dataModel;
+}
+
 - (void)initFakeData
 {
     NSDate *currentDate = [NSDate date];
@@ -194,7 +210,7 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
         NSMutableArray *mutableTimeData = [NSMutableArray array];
         for (int i=0; i<kJBLineChartViewControllerMaxNumChartPoints; i++)
         {
-            [mutableChartData addObject:[NSNumber numberWithFloat:((double)arc4random() / ARC4RANDOM_MAX)]]; // random number between 0 and 1
+           // [mutableChartData addObject:[NSNumber numberWithFloat:40.0]]; // random number between 0 and 1
             
             NSString *dateString = [dateFormatter stringFromDate:currentDate];
             [mutableTimeData addObject:dateString];
@@ -204,10 +220,9 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     }
     _chartData = [NSMutableArray arrayWithArray:mutableLineCharts];
     _daysOfWeek = [NSMutableArray arrayWithArray:mutableTimeCharts];
-    
-    
-    
-    
+    _savedHumidity = [NSMutableArray array];
+    _savedhumiditytimestamps =[NSMutableArray array];
+  
     
 }
 
@@ -236,78 +251,141 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    lineChartView = [[JBLineChartView alloc] init];
-    lineChartView.delegate = self;
-    lineChartView.dataSource = self;
-    [self.view addSubview:lineChartView];
-    //barChartView.frame = CGRectMake(0, 00, 300, 300);
-    //[barChartView reloadData];
     
-    lineChartView.frame = CGRectMake(25, 100, 250, 250);
+    [super loadView];
+    self.view.backgroundColor = [UIColor grayColor];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
-    
-    CGRect resultFrame = CGRectMake(0.0f,
-                                    0.0f,
-                                    50,
-                                    50);
-    lineChartView.headerView = [[UIView alloc] initWithFrame:resultFrame];
-    
-    
-    informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(lineChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(lineChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame))];
-    [informationView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
-    [informationView setTitleTextColor:kJBColorLineChartHeader];
-    [informationView setTextShadowColor:nil];
-    [informationView setSeparatorColor:kJBColorLineChartHeaderSeparatorColor];
-    [self.view addSubview:informationView];
-    
-    [informationView setValueText:[NSString stringWithFormat:@"888"] unitText:kJBStringLabelPpm];
-    //   [informationView setTitleText:lineIndex == JBLineChartLineSolid ? kJBStringLabelMetropolitanAverage : kJBStringLabelNationalAverage];
-    [informationView setHidden:NO animated:NO];
-    
-    UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
+    self.lineChartView = [[JBLineChartView alloc] init];
+    self.lineChartView.frame = CGRectMake(kJBLineChartViewControllerChartPadding, kJBLineChartViewControllerChartPadding, self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartHeight);
+    self.lineChartView.delegate = self;
+    self.lineChartView.dataSource = self;
+    self.lineChartView.headerPadding = kJBLineChartViewControllerChartHeaderPadding;
+    self.lineChartView.backgroundColor = [UIColor grayColor];
+
+    //    lineChartView.frame = CGRectMake(25, 50, 250, 250);
+    //
+    //
+    //    CGRect resultFrame = CGRectMake(0.0f,
+    //                                    0.0f,
+    //                                    50,
+    //                                    50);
+    //    lineChartView.headerView = [[UIView alloc] initWithFrame:resultFrame];
     
     
+    headerView = [[JBChartHeaderView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartHeaderHeight * 0.5), self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartHeaderHeight)];
     
-    [yourLabel setTextColor:[UIColor whiteColor]];
-    [yourLabel setBackgroundColor:[UIColor clearColor]];
-    [yourLabel setFont:[UIFont fontWithName: @"Times New Roman" size: 14.0f]];
-    yourLabel.text = [@"Breath Data Trends" uppercaseString];
-    yourLabel.textAlignment = NSTextAlignmentCenter;
-    yourLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
-    yourLabel.shadowOffset = CGSizeMake(0, 1);
-    
-    
-    yourLabel.Frame = CGRectMake(30, 100, 250, 50);
-    [self.view addSubview:yourLabel];
-    
-    _footerView = [[JBLineChartFooterView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartFooterHeight * 0.5), self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartFooterHeight)];    _footerView.backgroundColor = [UIColor clearColor];
-//    footerView.leftLabel.text = [@"8:00 AM" uppercaseString];
-//    footerView.leftLabel.textColor = [UIColor whiteColor];
-//    footerView.rightLabel.text = [@"9:00 PM" uppercaseString];;
-//    footerView.rightLabel.textColor = [UIColor whiteColor];
-    
-    _footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
-    _footerView.leftLabel.textColor = [UIColor whiteColor];
-    _footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
-    _footerView.rightLabel.textColor = [UIColor whiteColor];
-    _footerView.sectionCount = 15;
-    lineChartView.footerView = _footerView;
-    
-    [self.view addSubview:lineChartView];
+    if([self.sensorType isEqualToString:@"rH"]){
+        headerView.titleLabel.text = [@"Today's Humidity Measurement" uppercaseString];
+    }else if([self.sensorType isEqualToString:@"pressure"]){
+        headerView.titleLabel.text = [@"Today's Pressure Measurement" uppercaseString];
+    }else if([self.sensorType isEqualToString:@"aTemp"]){
+        headerView.titleLabel.text = [@"Today's Ambient Temperature" uppercaseString];
+    }else if([self.sensorType isEqualToString:@"irTemp"]){
+        headerView.titleLabel.text = [@"Today's IR Temperature" uppercaseString];
+    }
     
     
-    //    JBChartInformationView *informationView = [[JBChartInformationView alloc] init];
-    //    [self.view addSubview:informationView];
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMMM dd, YYYY"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+
     
     
-    lineChartView.footerView.backgroundColor = [UIColor clearColor];
+    //headerView.titleLabel.text = [@"Today's Humidity Measurement" uppercaseString];
+    headerView.titleLabel.textColor = kJBColorLineChartHeader;
+    headerView.titleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+    headerView.titleLabel.shadowOffset = CGSizeMake(0, 1);
+    headerView.subtitleLabel.text = dateString;
+    headerView.subtitleLabel.textColor = kJBColorLineChartHeader;
+    headerView.subtitleLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+    headerView.subtitleLabel.shadowOffset = CGSizeMake(0, 1);
+    headerView.separatorColor = kJBColorLineChartHeaderSeparatorColor;
+    self.lineChartView.headerView = headerView;
+
+    footerView = [[JBLineChartFooterView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartFooterHeight * 0.5), self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartFooterHeight)];
+    footerView.backgroundColor = [UIColor clearColor];
+    footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
+    footerView.leftLabel.textColor = [UIColor whiteColor];
+    footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
+    footerView.rightLabel.textColor = [UIColor whiteColor];
+    //footerView.sectionCount = [[self largestLineData] count];
+    self.lineChartView.footerView = footerView;
+    
+    [self.view addSubview:self.lineChartView];
+    
+    self.informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(self.lineChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(self.lineChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame))];
+    [self.informationView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
+    [self.informationView setTitleTextColor:kJBColorLineChartHeader];
+    [self.informationView setTextShadowColor:nil];
+    [self.informationView setSeparatorColor:kJBColorLineChartHeaderSeparatorColor];
+    
+    NSString *label = @"";
     
     
-    [lineChartView reloadData];
-	// Do any additional setup after loading the view.
+    if([self.sensorType isEqualToString:@"rH"]){
+        label = @"rH";
+    }else if([self.sensorType isEqualToString:@"pressure"]){
+        label= @"mBar";
+    }else if([self.sensorType isEqualToString:@"aTemp"]){
+        label= @"°C";
+    }else if([self.sensorType isEqualToString:@"irTemp"]){
+        label= @"°C";
+    }
     
-    //barChartView.backgroundColor = [UIColor redColor]; // UIColor
-    lineChartView.backgroundColor = [UIColor clearColor]; // UIColor
+    
+    [self.informationView setValueText:@"--.-" unitText:label];
+    [self.informationView setHidden:NO animated:NO];
+    [self.view addSubview:self.informationView];
+    
+    [self.lineChartView reloadData];
+
+    
+//    informationView = [[JBChartInformationView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, CGRectGetMaxY(lineChartView.frame), self.view.bounds.size.width, self.view.bounds.size.height - CGRectGetMaxY(lineChartView.frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame))];
+//    [informationView setValueAndUnitTextColor:[UIColor colorWithWhite:1.0 alpha:0.75]];
+//    [informationView setTitleTextColor:kJBColorLineChartHeader];
+//    [informationView setTextShadowColor:nil];
+//    [informationView setSeparatorColor:kJBColorLineChartHeaderSeparatorColor];
+//    [self.view addSubview:informationView];
+//    
+//    [informationView setValueText:[NSString stringWithFormat:@"--.-"] unitText:kJBStringLabelrH];
+//
+//    [informationView setHidden:NO animated:NO];
+//    
+//    UILabel *yourLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
+    
+    
+    
+//    [yourLabel setTextColor:[UIColor whiteColor]];
+//    [yourLabel setBackgroundColor:[UIColor clearColor]];
+//    [yourLabel setFont:[UIFont fontWithName: @"Times New Roman" size: 14.0f]];
+//    yourLabel.text = [@"Breath Data Trends" uppercaseString];
+//    yourLabel.textAlignment = NSTextAlignmentCenter;
+//    yourLabel.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.25];
+//    yourLabel.shadowOffset = CGSizeMake(0, 1);
+    
+    
+//    yourLabel.Frame = CGRectMake(30, 50, 250, 50);
+//    [self.view addSubview:yourLabel];
+//    
+//    _footerView = [[JBLineChartFooterView alloc] initWithFrame:CGRectMake(kJBLineChartViewControllerChartPadding, ceil(self.view.bounds.size.height * 0.5) - ceil(kJBLineChartViewControllerChartFooterHeight * 0.5), self.view.bounds.size.width - (kJBLineChartViewControllerChartPadding * 2), kJBLineChartViewControllerChartFooterHeight)];    _footerView.backgroundColor = [UIColor clearColor];
+//
+//    _footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
+//    _footerView.leftLabel.textColor = [UIColor whiteColor];
+//    _footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
+//    _footerView.rightLabel.textColor = [UIColor whiteColor];
+//    _footerView.sectionCount = 15;
+//    lineChartView.footerView = _footerView;
+//    
+//    [self.view addSubview:self.lineChartView];
+//        
+    
+//    [lineChartView reloadData];
+//	// Do any additional setup after loading the view.
+//    
+//
+//    lineChartView.backgroundColor = [UIColor clearColor]; // UIColor
 }
 
 - (void)viewDidLoad
@@ -315,33 +393,59 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor grayColor];
-    
+    self.navigationController.navigationBar.tintColor= [UIColor clearColor];
 
-
-    
-//    JBLineChartView *lineChartView = [[JBLineChartView alloc] init];
-//    lineChartView.delegate = self;
-//    lineChartView.dataSource = self;
-//    [self.view addSubview:lineChartView];
-//    //barChartView.frame = CGRectMake(0, 00, 300, 300);
-//    //[barChartView reloadData];
-//    
-//    lineChartView.frame = CGRectMake(25, 100, 250, 250);
-//    
-//    
-//    CGRect resultFrame = CGRectMake(0.0f,
-//                                    0.0f,
-//                                    50,
-//                                    50);
-//    lineChartView.headerView = [[UIView alloc] initWithFrame:resultFrame];
-    
-
-    [lineChartView reloadData];
-    
-
+    [self.lineChartView reloadData];
 }
 
+- (IBAction)pauseButton:(id)sender
+{
+    //self.navigationController.dataModel = _dataModel;
+    //[self.navigationController popViewControllerAnimated:YES];
+    //((CPWAppDelegate*)[[UIApplication sharedApplication] delegate]).dataModel = _dataModel;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
+- (IBAction)captureandSave:(id)sender
+{
+    
+    if([self.sensorType isEqualToString:@"rH"]){
+        NSLog(@"Capturing");
+        [self.savedHumidity addObject:[[self.chartData objectAtIndex:0] lastObject]];
+        [self.dataModel addHumidityData:self.savedHumidity];
+        
+        
+        //[[NSUserDefaults standardUserDefaults] setObject:self.savedHumidity forKey:@"humidity"];
+        
+        NSLog(@"Saving array of size: %d",[[self.dataModel humidity] count]);
+        [self.savedhumiditytimestamps addObject:[[self.daysOfWeek objectAtIndex:0]lastObject]];
+        [self.dataModel addHumidtyTime:self.savedhumiditytimestamps];
+    }
+//    }else if([self.sensorType isEqualToString:@"pressure"]){
+//        [self.savedPressure addObject:[self.chartData lastObject]];
+//        _dataModel.pressure = self.savedPressure;
+//        [self.savedpressuretimestamps addObject:[self.daysOfWeek lastObject]];
+//        _dataModel.humiditytimestamps = self.savedhumiditytimestamps;
+//        
+//    }else if([self.sensorType isEqualToString:@"aTemp"]){
+//        [self.savedaTemp addObject:[self.chartData lastObject]];
+//        _dataModel.aTemp = self.savedaTemp;
+//        [self.savedaTemptimestamps addObject:[self.daysOfWeek lastObject]];
+//        _dataModel.humiditytimestamps = self.savedhumiditytimestamps;
+//    
+//    }else if([self.sensorType isEqualToString:@"irTemp"]){
+//        [self.savedirTemp addObject:[self.chartData lastObject]];
+//        _dataModel.irTemp = self.savedirTemp;
+//        [self.savedirTemptimestamps addObject:[self.daysOfWeek lastObject]];
+//        _dataModel.humiditytimestamps = self.savedhumiditytimestamps;
+//        
+//    }
+    
+//    
+//    CPWCaptureViewController *vC = [[CPWCaptureViewController alloc] init];
+//    vC.dataModel = _dataModel;
+//    [self.navigationController pushViewController:vC animated:YES];
+}
 
 - (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView
 {
@@ -349,18 +453,11 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     return 1; // number of lines in chart
 }
 
-- (BOOL)lineChartView:(JBLineChartView *)lineChartView showsDotsForLineAtLineIndex:(NSUInteger)lineIndex{
-    return NO;
-}
+//
+//- (BOOL)lineChartView:(JBLineChartView *)lineChartView smoothLineAtLineIndex:(NSUInteger)lineIndex{
+//    return YES;
+//}
 
-- (BOOL)lineChartView:(JBLineChartView *)lineChartView smoothLineAtLineIndex:(NSUInteger)lineIndex{
-    return YES;
-}
-
-- (UIColor *)lineChartView:(JBLineChartView *)lineChartView selectionColorForLineAtLineIndex:(NSUInteger)lineIndex
-{
-    return [UIColor greenColor]; // color of selected line
-}
 
 - (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex
 {
@@ -370,33 +467,54 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
 {
-    //return horizontalIndex;
     return [[[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex] floatValue];
 }
 
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectLineAtIndex:(NSUInteger)lineIndex horizontalIndex:(NSUInteger)horizontalIndex touchPoint:(CGPoint)touchPoint
 {
+    
+    NSNumber *valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
+    [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:kJBStringLabelrH];
+    
+    
+    if([self.sensorType isEqualToString:@"rH"]){
+        [self.informationView setTitleText:@"Relative Humidity"];
+    }else if([self.sensorType isEqualToString:@"pressure"]){
+        [self.informationView setTitleText:@"Barometer Pressure"];
+    }else if([self.sensorType isEqualToString:@"aTemp"]){
+        [self.informationView setTitleText:@"Ambient Temperature"];
+    }else if([self.sensorType isEqualToString:@"irTemp"]){
+        [self.informationView setTitleText:@"IR Temperature"];
+    }
+    //[self.informationView setTitleText:lineIndex == JBLineChartLineSolid ? @"Acetone Concentration" : @"Water Concentration"];
+    [self.informationView setHidden:NO animated:YES];
+    [self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
+    [self.tooltipView setText:[[[self.daysOfWeek objectAtIndex:0] objectAtIndex:horizontalIndex] uppercaseString]];
 
-    [informationView setTitleText:lineIndex == JBLineChartLineSolid ? @"Acetone Concentration" : @"Water Concentration"];
-
-
-    [informationView setValueText:[NSString stringWithFormat:@"%0.1f", [[NSNumber numberWithUnsignedInteger: horizontalIndex] floatValue]] unitText:kJBStringLabelPpm];
-
-//    
-//    NSNumber *valueNumber = [[self.chartData objectAtIndex:lineIndex] objectAtIndex:horizontalIndex];
-//    [self.informationView setValueText:[NSString stringWithFormat:@"%.2f", [valueNumber floatValue]] unitText:kJBStringLabelMm];
-//    [self.informationView setTitleText:lineIndex == JBLineChartLineSolid ? kJBStringLabelMetropolitanAverage : kJBStringLabelNationalAverage];
-//    [self.informationView setHidden:NO animated:YES];
-//    [self setTooltipVisible:YES animated:YES atTouchPoint:touchPoint];
-//    [self.tooltipView setText:[[self.daysOfWeek objectAtIndex:horizontalIndex] uppercaseString]];
 }
 
-//- (void)didUnselectLineInLineChartView:(JBLineChartView *)lineChartView
-//{
-//    [self.informationView setHidden:YES animated:YES];
-//    [self setTooltipVisible:NO animated:YES];
-//}
+- (void)didUnselectLineInLineChartView:(JBLineChartView *)lineChartView
+{
+    [self.informationView setHidden:NO animated:YES];
+    [self setTooltipVisible:NO animated:YES];
+}
+
+- (UIColor *)lineChartView:(JBLineChartView *)lineChartView selectionColorForLineAtLineIndex:(NSUInteger)lineIndex
+{
+    return (lineIndex == JBLineChartLineSolid) ? kJBColorLineChartDefaultSolidSelectedLineColor: kJBColorLineChartDefaultDashedSelectedLineColor;
+}
+
+- (JBLineChartViewLineStyle)lineChartView:(JBLineChartView *)lineChartView lineStyleForLineAtLineIndex:(NSUInteger)lineIndex
+{
+    return (lineIndex == JBLineChartLineSolid) ? JBLineChartViewLineStyleSolid : JBLineChartViewLineStyleDashed;
+}
+
+- (BOOL)lineChartView:(JBLineChartView *)lineChartView showsDotsForLineAtLineIndex:(NSUInteger)lineIndex
+{
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -404,6 +522,12 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
 }
 
 
+#pragma mark - Overrides
+
+- (JBChartView *)chartView
+{
+    return self.lineChartView;
+}
 
 -(void) configureSensorTag {
     // Configure sensortag, turning on Sensors and setting update period for sensors etc ...
@@ -412,6 +536,11 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
         // Enable Temperature sensor
         CBUUID *sUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"IR temperature service UUID"]];
         CBUUID *cUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"IR temperature config UUID"]];
+//        CBUUID *pUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Accelerometer period UUID"]];
+//        NSInteger period = [[self.d.setupData valueForKey:@"Accelerometer period"] integerValue];
+//        uint8_t periodData = (uint8_t)(period / 10);
+//        NSLog(@"%d",periodData);
+//        [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:pUUID data:[NSData dataWithBytes:&periodData length:1]];
         uint8_t data = 0x01;
         [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:cUUID data:[NSData dataWithBytes:&data length:1]];
         cUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"IR temperature data UUID"]];
@@ -440,6 +569,11 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     if ([self sensorEnabled:@"Humidity active"]) {
         CBUUID *sUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Humidity service UUID"]];
         CBUUID *cUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Humidity config UUID"]];
+//        CBUUID *pUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Humidity period UUID"]];
+//        NSInteger period = [[self.d.setupData valueForKey:@"Humidity period"] integerValue];
+//        uint8_t periodData = (uint8_t)(period / 10);
+//        NSLog(@"%d",periodData);
+//        [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:pUUID data:[NSData dataWithBytes:&periodData length:1]];
         uint8_t data = 0x01;
         [BLEUtility writeCharacteristic:self.d.p sCBUUID:sUUID cCBUUID:cUUID data:[NSData dataWithBytes:&data length:1]];
         cUUID = [CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Humidity data UUID"]];
@@ -593,7 +727,59 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
         float tObj = [sensorTMP006 calcTObj:characteristic.value];
         
        
-
+        if([self.sensorType isEqualToString:@"aTemp"]){
+            [self.informationView setValueText:[NSString stringWithFormat:@"%0.1f",tAmb] unitText:@"°C"];
+            NSDate *currentDate = [NSDate date];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm:ss"];
+            NSString *dateString = [dateFormatter stringFromDate:currentDate];
+            
+            if(!([[self.chartData objectAtIndex:0] count] < 7)){
+                [[self.chartData objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.chartData objectAtIndex:0] addObject: [NSNumber numberWithFloat:tAmb]];
+            
+            if(!([[self.daysOfWeek objectAtIndex:0] count] < 7)){
+                [[self.daysOfWeek objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.daysOfWeek objectAtIndex:0] addObject: dateString];
+            
+            footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
+            footerView.leftLabel.textColor = [UIColor whiteColor];
+            footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
+            footerView.rightLabel.textColor = [UIColor whiteColor];
+            footerView.sectionCount = 15;
+            self.lineChartView.footerView = footerView;
+            
+            //[self.view addSubview:lineChartView];
+            [self.lineChartView reloadData];
+        }else if([self.sensorType isEqualToString:@"irTemp"]){
+            
+            [self.informationView setValueText:[NSString stringWithFormat:@"%0.1f",tObj] unitText:@"°C"];
+            NSDate *currentDate = [NSDate date];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm:ss"];
+            NSString *dateString = [dateFormatter stringFromDate:currentDate];
+            
+            if(!([[self.chartData objectAtIndex:0] count] < 7)){
+                [[self.chartData objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.chartData objectAtIndex:0] addObject: [NSNumber numberWithFloat:tObj]];
+            if(!([[self.daysOfWeek objectAtIndex:0] count] > 0)){
+                [[self.daysOfWeek objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.daysOfWeek objectAtIndex:0] addObject: dateString];
+            
+            footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
+            footerView.leftLabel.textColor = [UIColor whiteColor];
+            footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
+            footerView.rightLabel.textColor = [UIColor whiteColor];
+            footerView.sectionCount = 15;
+            self.lineChartView.footerView = footerView;
+            
+            //[self.view addSubview:lineChartView];
+            [self.lineChartView reloadData];
+        }
         
         
         self.ambientTemp.temperature.text = [NSString stringWithFormat:@"%.1f°C",tAmb];
@@ -638,28 +824,38 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
         
         float rHVal = [sensorSHT21 calcPress:characteristic.value];
         
-        [informationView setValueText:[NSString stringWithFormat:@"%0.1f",rHVal] unitText:kJBStringLabelrH];
-        //[informationView setValueText:[NSString stringWithFormat:@"%0.1f%%rH",rHVal] unitText:kJBStringLabelPpm];
+       
+
         
-        NSDate *currentDate = [NSDate date];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"HH:mm:ss"];
-        NSString *dateString = [dateFormatter stringFromDate:currentDate];
+        if([self.sensorType isEqualToString:@"rH"]){
+            
+            [self.informationView setValueText:[NSString stringWithFormat:@"%0.1f",rHVal] unitText:kJBStringLabelrH];
+            NSDate *currentDate = [NSDate date];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm:ss"];
+            NSString *dateString = [dateFormatter stringFromDate:currentDate];
+            
+            if(!([[self.chartData objectAtIndex:0] count] < 7)){
+                [[self.chartData objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.chartData objectAtIndex:0] addObject: [NSNumber numberWithFloat:rHVal]];
+            if(!([[self.daysOfWeek objectAtIndex:0] count] > 0)){
+                [[self.daysOfWeek objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.daysOfWeek objectAtIndex:0] addObject: dateString];
+            
+            footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
+            footerView.leftLabel.textColor = [UIColor whiteColor];
+            footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
+            footerView.rightLabel.textColor = [UIColor whiteColor];
+            footerView.sectionCount = 15;
+            self.lineChartView.footerView = footerView;
+            
+            //[self.view addSubview:lineChartView];
+            [self.lineChartView reloadData];
+        }
         
-        [[self.chartData objectAtIndex:0] removeObjectAtIndex: 0];
-        [[self.chartData objectAtIndex:0] addObject: [NSNumber numberWithFloat:rHVal]];
-        [[self.daysOfWeek objectAtIndex:0] removeObjectAtIndex: 0];
-        [[self.daysOfWeek objectAtIndex:0] addObject: dateString];
         
-        _footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
-        _footerView.leftLabel.textColor = [UIColor whiteColor];
-        _footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
-        _footerView.rightLabel.textColor = [UIColor whiteColor];
-        _footerView.sectionCount = 15;
-        lineChartView.footerView = _footerView;
-        
-        //[self.view addSubview:lineChartView];
-        [lineChartView reloadData];
         
         self.rH.temperature.text = [NSString stringWithFormat:@"%0.1f%%rH",rHVal];
         self.rH.temperatureGraph.progress = (rHVal / 100);
@@ -707,6 +903,36 @@ NSInteger const kJBLineChartViewControllerMaxNumChartPoints = 7;
     
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:[self.d.setupData valueForKey:@"Barometer data UUID"]]]) {
         int pressure = [self.baroSensor calcPressure:characteristic.value];
+        
+        
+        
+        if([self.sensorType isEqualToString:@"pressure"]){
+            
+            [self.informationView setValueText:[NSString stringWithFormat:@"%0.1d",pressure] unitText:@"mBar"];
+            NSDate *currentDate = [NSDate date];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm:ss"];
+            NSString *dateString = [dateFormatter stringFromDate:currentDate];
+            
+            if(!([[self.chartData objectAtIndex:0] count] < 7)){
+                [[self.chartData objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.chartData objectAtIndex:0] addObject: [NSNumber numberWithFloat:pressure]];
+            if(!([[self.daysOfWeek objectAtIndex:0] count] > 0)){
+                [[self.daysOfWeek objectAtIndex:0] removeObjectAtIndex: 0];
+            }
+            [[self.daysOfWeek objectAtIndex:0] addObject: dateString];
+            
+            footerView.leftLabel.text = [[[self.daysOfWeek objectAtIndex:0] firstObject] uppercaseString];
+            footerView.leftLabel.textColor = [UIColor whiteColor];
+            footerView.rightLabel.text = [[[self.daysOfWeek objectAtIndex:0] lastObject] uppercaseString];;
+            footerView.rightLabel.textColor = [UIColor whiteColor];
+            footerView.sectionCount = 15;
+            self.lineChartView.footerView = footerView;
+            
+            //[self.view addSubview:lineChartView];
+            [self.lineChartView reloadData];
+        }
         self.baro.temperature.text = [NSString stringWithFormat:@"%d mBar",pressure];
         self.baro.temperatureGraph.progress = ((float)((float)pressure - (float)800) / (float)400);
         self.baro.temperature.textColor = [UIColor blackColor];

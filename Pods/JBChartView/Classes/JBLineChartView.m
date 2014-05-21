@@ -51,6 +51,7 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
 @property (nonatomic, assign) NSUInteger tag;
 @property (nonatomic, assign) JBLineChartViewLineStyle lineStyle;
 
+
 @end
 
 @interface JBLineChartPoint : NSObject
@@ -136,6 +137,10 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
 @property (nonatomic, assign) CGFloat cachedMinHeight;
 @property (nonatomic, assign) BOOL verticalSelectionViewVisible;
 
+
+@property (nonatomic, assign) CGFloat MINBOUND;
+@property (nonatomic, assign) CGFloat MAXBOUND;
+
 // Initialization
 - (void)construct;
 
@@ -163,6 +168,8 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
 
 @implementation JBLineChartView
 
+
+
 #pragma mark - Alloc/Init
 
 + (void)initialize
@@ -171,6 +178,8 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
 	{
 		kJBLineChartViewDefaultLineColor = [UIColor blackColor];
 		kJBLineChartViewDefaultLineSelectionColor = [UIColor whiteColor];
+
+        
 	}
 }
 
@@ -179,6 +188,7 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
     self = [super initWithCoder:aDecoder];
     if (self)
     {
+        
         [self construct];
     }
     return self;
@@ -196,6 +206,9 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
 
 - (id)init
 {
+    
+    _MINBOUND = FLT_MAX;
+    _MAXBOUND = 0;
     self = [super init];
     if (self)
     {
@@ -216,6 +229,15 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
 
 - (void)reloadData
 {
+//    //Adjust the min and max values
+//    if (self.cachedMinHeight < self.minHeight){
+//        [super setMininumValue:0];
+//    }
+//    
+//    if (self.cachedMaxHeight > self.maxHeight){
+//        [super setMaximumValue:100];
+//    }
+    
     // Reset cached max height
     self.cachedMinHeight = kJBBarChartViewUndefinedCachedHeight;
     self.cachedMaxHeight = kJBBarChartViewUndefinedCachedHeight;
@@ -628,10 +650,12 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
                 if (height < minHeight)
                 {
                     minHeight = height;
+                    self.MINBOUND = MIN(minHeight,self.MINBOUND);
                 }
             }
         }
-        _cachedMinHeight = minHeight;
+        CGFloat adjustedminHeight = 0.9*self.MINBOUND;
+        _cachedMinHeight = MIN(adjustedminHeight,minHeight);
     }
     return _cachedMinHeight;
 }
@@ -654,10 +678,13 @@ static UIColor *kJBLineChartViewDefaultLineSelectionColor = nil;
                 if (height > maxHeight)
                 {
                     maxHeight = height;
+                    self.MAXBOUND = MAX(maxHeight,self.MAXBOUND);
                 }
             }
         }
-        _cachedMaxHeight = maxHeight;
+        NSLog(@"MAXBOUND is %f",self.MAXBOUND);
+        CGFloat adjustedmaxHeight = 1.1*self.MAXBOUND;
+        _cachedMaxHeight = MAX(adjustedmaxHeight,maxHeight);
     }
     return _cachedMaxHeight;
 }

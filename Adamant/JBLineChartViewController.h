@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jawbone. All rights reserved.
 //
 
-#import "/Users/conniewu/Documents/CIS 195/Adamant/Adamant/Base/JBBaseChartViewController.h"
+#import "JBBaseChartViewController.h"
 #import "BLEDevice.h"
 #import "BLEUtility.h"
 #import "deviceCellTemplate.h"
@@ -20,6 +20,7 @@
 @interface JBLineChartViewController : JBBaseChartViewController <CBCentralManagerDelegate,CBPeripheralDelegate,MFMailComposeViewControllerDelegate>
 
 @property (strong,nonatomic) BLEDevice *d;
+@property (strong,nonatomic) NSString *sensorType;
 @property NSMutableArray *sensorsEnabled;
 
 /// Temperature cell
